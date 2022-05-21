@@ -5,6 +5,7 @@ pipeline {
         stage('clean') {
             agent { docker (image)
                 sh '''
+                ls
 
                 '''
             }
@@ -12,6 +13,7 @@ pipeline {
         stage('validate') {
             steps {
                 sh '''
+                pwd
 
                 '''
             }
@@ -20,6 +22,7 @@ pipeline {
         stage('compile') {
             steps {
                 sh '''
+                free -h
 
                 '''
             }
@@ -27,6 +30,7 @@ pipeline {
             stage('test') {
             steps {
                 sh '''
+                mkdir ino
 
                 '''
             }
@@ -34,6 +38,7 @@ pipeline {
         stage('package') {
             steps {
                 sh '''
+                touch kove
 
                 '''
             }
@@ -43,6 +48,7 @@ pipeline {
         stage('verify') {
             steps {
                 sh '''
+                ls -la
 
                 '''
             }
@@ -51,6 +57,8 @@ pipeline {
         stage('install') {
             steps {
                 sh '''
+                pwd
+                
 
                 '''
                
