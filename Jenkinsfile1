@@ -2,10 +2,62 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
+        stage('clean') {
+            agent { docker (image)
+                sh '''
+
+                '''
             }
         }
+        stage('validate') {
+            steps {
+                sh '''
+
+                '''
+            }
+        }
+        
+        stage('compile') {
+            steps {
+                sh '''
+
+                '''
+            }
+        }
+            stage('test') {
+            steps {
+                sh '''
+
+                '''
+            }
+        }
+        stage('package') {
+            steps {
+                sh '''
+
+                '''
+            }
+        }
+
+        
+        stage('verify') {
+            steps {
+                sh '''
+
+                '''
+            }
+        }        
+
+        stage('install') {
+            steps {
+                sh '''
+
+                '''
+               
+            }
+        }    
+        
+
     }
+
 }
