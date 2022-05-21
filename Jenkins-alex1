@@ -2,16 +2,94 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('clean') {
             steps {
-                echo 'Hello World'
+                sh '''
+             mvn clean
+             '''
+            
+        
             }
         }
     
     
+    stages {
+           agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('validate') {
+            steps {
+                  sh '''
+             mvn validate
+             '''
+            }
+        } 
+    
+    stages {
+           agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('compile') {
+            steps {
+                  sh '''
+             mvn compile
+             '''
+            }
+        } 
     
     
     
+    stages {
+           agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('test') {
+            steps {
+                  sh '''
+             mvn test
+             '''
+            }
+        } 
+    
+    
+    
+    stages {
+           agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('package') {
+            steps {
+                  sh '''
+             mvn package
+             '''
+            }
+        } 
+    
+    
+    stages {
+        stage('verify') {
+            steps {
+                  sh '''
+             mvn verify
+             '''
+            }
+        } 
+    
+    
+    stages {
+           agent {
+        docker { image 'maven:3.8.5-openjdk-8-slim'}
+    }
+        stage('install') {
+            steps {
+                  sh '''
+             mvn install
+             '''
+            }
+        } 
     
     
     }
